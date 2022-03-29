@@ -5,9 +5,8 @@ program
   .name('gendiff')
   .version('0.1.0')
   .description('Compares two configuration files and shows a difference.')
-  .parse(process.argv);
+  .arguments('<filepath1> <filepath2>')
+  .option('-f, --format <type>',  'output format')
   
-program.command
-  .option('-V, --version', 'output the version number')
-
-program.parse()
+program.parse(process.argv);
+  
