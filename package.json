@@ -1,0 +1,26 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "front end project 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest --bail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Viltorn/frontend-project-lvl2.git"
+  },
+  "author": "Viltorn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Viltorn/frontend-project-lvl2/issues"
+  },
+  "homepage": "https://github.com/Viltorn/frontend-project-lvl2#readme",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
+  "dependencies": {
+    "commander": "^9.1.0"
+  }
+}
