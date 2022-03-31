@@ -28,6 +28,7 @@ const genDiff = (file1, file2) => {
     }
     return `    ${value}: ${file1Data[value]}`;
   });
+  console.log(normalizePath(file1));
   return `{\n${comparedData.join('\n')}\n}`;
 };
 

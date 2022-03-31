@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "front end project 2",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "npx jest --bail"
   },
