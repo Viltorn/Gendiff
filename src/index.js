@@ -31,7 +31,7 @@ const genDiff = (file1, file2) => {
     }
     return `    ${value}: ${file1Data[value]}`;
   });
-  console.log(`{\n${comparedData.join('\n')}\n}`);
+  return `{\n${comparedData.join('\n')}\n}`;
 };
 
 export default genDiff;
