@@ -5,10 +5,7 @@ import path from 'path';
 const normalizePath = (filepath) => (`${filepath}`.startsWith('/') ? `${filepath}` : path.resolve(`${filepath}`));
 
 const getFileData = (filepath) => {
-  const fileData = readFileSync(normalizePath(filepath), 'utf8', (err, data) => {
-    if (err) throw err;
-    return data;
-  });
+  const fileData = readFileSync(normalizePath(filepath), 'utf8')
   return JSON.parse(fileData);
 };
 
