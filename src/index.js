@@ -1,8 +1,8 @@
 import _ from 'lodash';
-import { readFileSync } from 'fs';
 import path from 'path';
+import { readFileSync } from 'fs';
 
-const normalizePath = (filepath) => (`${filepath}`.startsWith('/') ? `${filepath}` : path.resolve(`${filepath}`));
+const normalizePath = (filepath) => (filepath.startsWith('/') ? filepath : path.resolve(filepath));
 
 const getFileData = (filepath) => {
   const fileData = readFileSync(normalizePath(filepath), 'utf8');
