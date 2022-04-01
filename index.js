@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import path from 'path';
 import { readFileSync } from 'fs';
+import { cwd } from 'process';
 
-const normalizePath = (filepath) => (path.isAbsolute(filepath) ? filepath : path.resolve(filepath));
+const normalizePath = (filepath) => path.resolve(cwd(filepath), filepath);
 
 const getFileData = (filepath) => {
   const fileData = readFileSync(normalizePath(filepath), 'utf8');
