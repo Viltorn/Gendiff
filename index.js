@@ -1,13 +1,5 @@
 import _ from 'lodash';
-import path from 'path';
-import { readFileSync } from 'fs';
-
-const normalizePath = (filepath) => path.resolve(process.cwd(), filepath);
-
-const getFileData = (filepath) => {
-  const fileData = readFileSync(normalizePath(filepath), 'utf8');
-  return JSON.parse(fileData);
-};
+import getFileData from './src/parsers.js';
 
 const genDiff = (file1, file2) => {
   const file1Data = getFileData(file1);
@@ -16,7 +8,7 @@ const genDiff = (file1, file2) => {
   const keys2 = Object.keys(file2Data);
   const unionKeys = _.union(keys1, keys2);
   const sortedKeys = unionKeys.sort();
-  const comparedData = sortedKeys.flatMap((value) => {
+  const result = sortedKeys.flatMap((value) => {
     if (!Object.hasOwn(file1Data, value)) {
       return `  + ${value}: ${file2Data[value]}`;
     }
@@ -28,8 +20,7 @@ const genDiff = (file1, file2) => {
     }
     return `    ${value}: ${file1Data[value]}`;
   });
-  console.log(normalizePath(file1));
-  return `{\n${comparedData.join('\n')}\n}`;
+  return `{\n${result.join('\n')}\n}`;
 };
 
 export default genDiff;

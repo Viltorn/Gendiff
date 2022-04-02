@@ -1,6 +1,8 @@
 ### How to use
+json extension
 [![asciicast](https://asciinema.org/a/lXEXAh1pQ5aQJB7Y8a1qsY5za.svg)](https://asciinema.org/a/lXEXAh1pQ5aQJB7Y8a1qsY5za)
-
+yml extension
+[![asciicast](https://asciinema.org/a/7UeEoCkwzfCzxTblFy9EhrXIG.svg)](https://asciinema.org/a/7UeEoCkwzfCzxTblFy9EhrXIG)
 ### Hexlet tests and linter status:
 ![Node CI](https://github.com/Viltorn/frontend-project-lvl2/actions/workflows/nodejs.yml/badge.svg)
 [![Actions Status](https://github.com/Viltorn/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Viltorn/frontend-project-lvl2/actions)
