@@ -2,7 +2,7 @@ import path from 'path';
 import { readFileSync } from 'fs';
 import yaml from 'js-yaml';
 
-const normalizePath = (filepath) => path.resolve(process.cwd(), filepath);
+const normalizePath = (filepath) => path.resolve(filepath);
 
 const parseData = (data, ext) => {
   if (ext === '.json') {

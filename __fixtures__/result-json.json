@@ -1,0 +1,98 @@
+{
+  "common": {
+    "data": {
+      "follow": {
+        "data": false,
+        "status": "added"
+      },
+      "setting1": {
+        "data": "Value 1",
+        "status": "unchanged"
+      },
+      "setting2": {
+        "data": 200,
+        "status": "deleted"
+      },
+      "setting3": {
+        "oldData": true,
+        "newData": null,
+        "status": "changed"
+      },
+      "setting4": {
+        "data": "blah blah",
+        "status": "added"
+      },
+      "setting5": {
+        "data": {
+          "key5": "value5"
+        },
+        "status": "added"
+      },
+      "setting6": {
+        "data": {
+          "doge": {
+            "data": {
+              "wow": {
+                "oldData": "",
+                "newData": "so much",
+                "status": "changed"
+              }
+            },
+            "status": "unset"
+          },
+          "key": {
+            "data": "value",
+            "status": "unchanged"
+          },
+          "ops": {
+            "data": "vops",
+            "status": "added"
+          }
+        },
+        "status": "unset"
+      }
+    },
+    "status": "unset"
+  },
+  "group1": {
+    "data": {
+      "baz": {
+        "oldData": "bas",
+        "newData": "bars",
+        "status": "changed"
+      },
+      "foo": {
+        "data": "bar",
+        "status": "unchanged"
+      },
+      "nest": {
+        "oldData": {
+          "key": "value"
+        },
+        "newData": "str",
+        "status": "changed"
+      }
+    },
+    "status": "unset"
+  },
+  "group2": {
+    "data": {
+      "abc": 12345,
+      "deep": {
+        "id": 45
+      }
+    },
+    "status": "deleted"
+  },
+  "group3": {
+    "data": {
+      "deep": {
+        "id": {
+          "number": 45
+        }
+      },
+      "fee": 100500
+    },
+    "status": "added"
+  }
+}

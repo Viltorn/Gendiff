@@ -1,13 +1,13 @@
 import _ from 'lodash';
 
+const isComplexValue = (value) => _.isObject(value);
+
 const formatValue = (value) => {
   const valueType = typeof value;
   return valueType === 'string' ? `'${value}'` : value;
 };
 
-const isComplexValue = (value) => _.isObject(value);
-
-const formatPlain = (value) => {
+const formatToPlain = (value) => {
   const iter = (currentValue, path) => {
     const result = Object
       .entries(currentValue)
@@ -33,4 +33,4 @@ const formatPlain = (value) => {
   };
   return iter(value, []);
 };
-export default formatPlain;
+export default formatToPlain;

@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const formatStylish = (value, replacer = '  ', spacecount = 2) => {
+const formatToStylish = (value, replacer = '  ', spacecount = 2) => {
   const iter = (currentValue, depth) => {
     if (!_.isObject(currentValue)) {
       return `${currentValue}`;
@@ -31,4 +31,4 @@ const formatStylish = (value, replacer = '  ', spacecount = 2) => {
   };
   return iter(value, 1);
 };
-export default formatStylish;
+export default formatToStylish;

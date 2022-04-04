@@ -40,3 +40,10 @@ test('gendiff yaml, plain format', () => {
   expect(result).toEqual(expectedresult);
   console.log(process.cwd());
 });
+
+test('gendiff json format', () => {
+  result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json');
+  expectedresult = readFile('result-json.json');
+  expect(result).toEqual(expectedresult);
+  console.log(process.cwd());
+});
