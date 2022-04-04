@@ -5,6 +5,8 @@ yml files extension (flat structure))
 [![asciicast](https://asciinema.org/a/7UeEoCkwzfCzxTblFy9EhrXIG.svg)](https://asciinema.org/a/7UeEoCkwzfCzxTblFy9EhrXIG)
 json and yml files extension (tree structure)
 [![asciicast](https://asciinema.org/a/lbGIHWp68RpWvwHGCQ1QMWUTx.svg)](https://asciinema.org/a/lbGIHWp68RpWvwHGCQ1QMWUTx)
+choose format output
+[![asciicast](https://asciinema.org/a/6dGsXO4r8Kz4wSwZ6HQy6b5FR.svg)](https://asciinema.org/a/6dGsXO4r8Kz4wSwZ6HQy6b5FR)
 ### Hexlet tests and linter status:
 ![Node CI](https://github.com/Viltorn/frontend-project-lvl2/actions/workflows/nodejs.yml/badge.svg)
 [![Actions Status](https://github.com/Viltorn/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Viltorn/frontend-project-lvl2/actions)

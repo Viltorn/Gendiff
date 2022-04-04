@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "front end project 2",
-  "main": "index.js",
+  "main": "gendiff.js",
   "scripts": {
     "test": "npx jest --bail"
   },
@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/Viltorn/frontend-project-lvl2#readme",
   "bin": {
-    "gendiff": "bin/gendiff.js"
+    "gendiff": "bin/cli.js"
   },
   "dependencies": {
     "commander": "^9.1.0",
