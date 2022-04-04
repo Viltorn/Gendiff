@@ -4,6 +4,9 @@
   "type": "module",
   "description": "front end project 2",
   "main": "gendiff.js",
+  "engines": {
+    "node": ">=16.9.0"
+  },
   "scripts": {
     "test": "npx jest --bail"
   },
