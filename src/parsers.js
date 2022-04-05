@@ -2,8 +2,6 @@ import path from 'path';
 import { readFileSync } from 'fs';
 import yaml from 'js-yaml';
 
-const normalizePath = (filepath) => path.resolve(filepath);
-
 const parseData = (data, ext) => {
   if (ext === '.json') {
     return JSON.parse(data);
@@ -15,7 +13,7 @@ const parseData = (data, ext) => {
 };
 
 const getFileData = (filepath) => {
-  const fileData = readFileSync(normalizePath(filepath), 'utf8');
+  const fileData = readFileSync(path.resolve(filepath), 'utf8');
   const extension = path.extname(filepath);
   return parseData(fileData, extension);
 };

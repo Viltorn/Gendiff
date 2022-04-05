@@ -1,3 +1,4 @@
+import { test } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 import { readFileSync } from 'fs';
@@ -46,4 +47,16 @@ test('gendiff json format', () => {
   expectedresult = readFile('result-json.json');
   expect(result).toEqual(expectedresult);
   console.log(process.cwd());
+});
+
+test('gendiff unsupported file extension', () => {
+  expect(() => {
+    genDiff(getFixturePath('file.txt'), getFixturePath('file2.json'));
+  }).toThrow();
+});
+
+test('gendiff unsupported formatter', () => {
+  expect(() => {
+    genDiff(getFixturePath('file.json'), getFixturePath('file2.json'), 'cool');
+  }).toThrow();
 });
