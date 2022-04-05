@@ -1,2 +1,4 @@
 node_modules/
 cwd.js
+*.log
+coverage
