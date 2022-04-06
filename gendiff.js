@@ -8,12 +8,12 @@ const getDataDiff = (file1Data, file2Data) => {
   const unionKeys = _.union(keys1, keys2);
   const sortedKeys = _.sortBy(unionKeys);
   const result = sortedKeys.reduce((acc, key) => {
-    if (!Object.hasOwn(file1Data, key)) {
+    if (!Object.prototype.hasOwnProperty.call(file1Data, `${key}`)) {
       acc[key] = { data: file2Data[key], status: 'added' };
-    } else if (!Object.hasOwn(file2Data, key)) {
+    } else if (!Object.prototype.hasOwnProperty.call(file2Data, `${key}`)) {
       acc[key] = { data: file1Data[key], status: 'deleted' };
     } else if (_.isObject(file1Data[key]) && _.isObject(file2Data[key])) {
-      acc[key] = { data: getDataDiff(file1Data[key], file2Data[key]), status: 'unset' };
+      acc[key] = { data: getDataDiff(file1Data[key], file2Data[key]), status: 'nested' };
     } else if (file1Data[key] !== file2Data[key]) {
       acc[key] = { oldData: file1Data[key], newData: file2Data[key], status: 'changed' };
     } else {

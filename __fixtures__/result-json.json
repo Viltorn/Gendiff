@@ -38,7 +38,7 @@
                 "status": "changed"
               }
             },
-            "status": "unset"
+            "status": "nested"
           },
           "key": {
             "data": "value",
@@ -49,10 +49,10 @@
             "status": "added"
           }
         },
-        "status": "unset"
+        "status": "nested"
       }
     },
-    "status": "unset"
+    "status": "nested"
   },
   "group1": {
     "data": {
@@ -73,7 +73,7 @@
         "status": "changed"
       }
     },
-    "status": "unset"
+    "status": "nested"
   },
   "group2": {
     "data": {

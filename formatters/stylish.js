@@ -21,7 +21,7 @@ const formatToStylish = (value, replacer = '  ', spacecount = 2) => {
             return `${smallIntend}- ${key}: ${iter(val.oldData, depth + 1)}\n${smallIntend}+ ${key}: ${iter(val.newData, depth + 1)}`;
           case 'unchanged':
             return `${bigIntend}${key}: ${iter(val.data, depth + 1)}`;
-          case 'unset':
+          case 'nested':
             return `${bigIntend}${key}: ${iter(val.data, depth + 1)}`;
           default:
             return `${bigIntend}${key}: ${iter(val, depth + 1)}`;

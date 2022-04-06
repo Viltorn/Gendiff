@@ -11,41 +11,41 @@ const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', 
 const readFile = (filename) => readFileSync(getFixturePath(filename), 'utf-8');
 
 let result;
-let expectedresult;
+let expectedResult;
 
 test('gendiff json, stylish format', () => {
   result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'stylish');
-  expectedresult = readFile('result.txt');
-  expect(result).toEqual(expectedresult);
+  expectedResult = readFile('result.txt');
+  expect(result).toEqual(expectedResult);
   console.log(getFixturePath('file1.json'));
   console.log(process.cwd());
 });
 
 test('gendiff yaml, stylish format', () => {
   result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'stylish');
-  expectedresult = readFile('result.txt');
-  expect(result).toEqual(expectedresult);
+  expectedResult = readFile('result.txt');
+  expect(result).toEqual(expectedResult);
   console.log(process.cwd());
 });
 
 test('gendiff json, plain format', () => {
   result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'plain');
-  expectedresult = readFile('result-plain.txt');
-  expect(result).toEqual(expectedresult);
+  expectedResult = readFile('result-plain.txt');
+  expect(result).toEqual(expectedResult);
   console.log(process.cwd());
 });
 
 test('gendiff yaml, plain format', () => {
   result = genDiff(getFixturePath('file1.yml'), getFixturePath('file2.yml'), 'plain');
-  expectedresult = readFile('result-plain.txt');
-  expect(result).toEqual(expectedresult);
+  expectedResult = readFile('result-plain.txt');
+  expect(result).toEqual(expectedResult);
   console.log(process.cwd());
 });
 
 test('gendiff json format', () => {
   result = genDiff(getFixturePath('file1.json'), getFixturePath('file2.json'), 'json');
-  expectedresult = readFile('result-json.json');
-  expect(result).toEqual(expectedresult);
+  expectedResult = readFile('result-json.json');
+  expect(result).toEqual(expectedResult);
   console.log(process.cwd());
 });
 

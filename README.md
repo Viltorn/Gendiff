@@ -1,5 +1,5 @@
 ### Gendiff
-Utility Compares two configuration files and shows a difference.
+Utility compares two configuration files and shows a difference.
 Supported file extensions: json, yaml.
 Supported output formates: stylish, plain, json.
 ### How to use

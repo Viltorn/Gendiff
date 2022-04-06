@@ -9,7 +9,7 @@ const parseData = (data, ext) => {
   if (ext === '.yml' || ext === '.yaml') {
     return yaml.load(data);
   }
-  throw new Error('Unsupported file extension');
+  throw new Error(`Unsupported file extension ${ext}`);
 };
 
 const getFileData = (filepath) => {
