@@ -1,15 +1,14 @@
 import _ from 'lodash';
 
-const formatToJson = (value) => {
+const formatToJson = (value, replacer = ' ', spacecount = 2) => {
   const iter = (currentValue, depth) => {
     if (!_.isObject(currentValue)) {
       const valueType = typeof currentValue;
       return valueType === 'string' ? `"${currentValue}"` : currentValue;
     }
-    const replacer = '  ';
-    const intendSize = depth;
+    const intendSize = depth * spacecount;
     const currentIntend = replacer.repeat(intendSize);
-    const bracketIntend = replacer.repeat(intendSize - 1);
+    const bracketIntend = replacer.repeat(intendSize - spacecount);
     const lines = Object.entries(currentValue);
     const result = lines.map((arr) => {
       const [key, val] = arr;

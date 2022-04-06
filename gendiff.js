@@ -6,7 +6,7 @@ const getDataDiff = (file1Data, file2Data) => {
   const keys1 = Object.keys(file1Data);
   const keys2 = Object.keys(file2Data);
   const unionKeys = _.union(keys1, keys2);
-  const sortedKeys = unionKeys.sort();
+  const sortedKeys = _.sortBy(unionKeys);
   const result = sortedKeys.reduce((acc, key) => {
     if (!Object.hasOwn(file1Data, key)) {
       acc[key] = { data: file2Data[key], status: 'added' };
