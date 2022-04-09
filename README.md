@@ -12,7 +12,7 @@ Supported output formates: stylish, plain, json.
 ### How to install
 1. Install last version of Node.js
 2. Clone repository with the package locally (git clone)
-3. Go to directory with the package (cd - "path to directory")
+3. Go to the directory with the package (cd - "path to directory")
 4. Install all dependencies (make install) 
 5. Install package globally (npm link)
 ### How to use

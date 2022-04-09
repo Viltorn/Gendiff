@@ -4,7 +4,7 @@ import formatData from './formatters/index.js';
 import parseData from './parsers.js';
 import getDataDiff from './datadiff.js';
 
-const makePath = (filepath) => path.resolve(filepath);
+const makePath = (filepath) => path.resolve(process.cwd(), filepath);
 const getFileExt = (filepath) => {
   const normalizedExt = path.extname(filepath).slice(1);
   return normalizedExt;
