@@ -1,6 +1,4 @@
 import _ from 'lodash';
-import getFileData from './src/parsers.js';
-import formatData from './formatters/index.js';
 
 const getDataDiff = (file1Data, file2Data) => {
   const keys1 = Object.keys(file1Data);
@@ -30,11 +28,4 @@ const getDataDiff = (file1Data, file2Data) => {
   return result;
 };
 
-const genDiff = (file1, file2, formatter = 'stylish') => {
-  const file1Data = getFileData(file1);
-  const file2Data = getFileData(file2);
-  const data = getDataDiff(file1Data, file2Data);
-  return formatData(data, formatter);
-};
-
-export default genDiff;
+export default getDataDiff;

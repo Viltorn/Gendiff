@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "description": "front end project 2",
-  "main": "gendiff.js",
+  "main": "src/gendiff.js",
   "engines": {
     "node": ">=16.9.0"
   },
