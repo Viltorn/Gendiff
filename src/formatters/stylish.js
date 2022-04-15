@@ -3,31 +3,43 @@ import _ from 'lodash';
 const formatToStylish = (value, replacer = '  ', spacecount = 2) => {
   const iter = (currentValue, depth) => {
     if (!_.isObject(currentValue)) {
-      return `${currentValue}`;
+      return currentValue;
     }
     const intendSize = depth * spacecount;
     const bigIntend = replacer.repeat(intendSize);
     const smallIntend = replacer.repeat(intendSize - 1);
     const bracketIntend = replacer.repeat(intendSize - spacecount);
-    const lines = Object
-      .entries(currentValue)
-      .map(([key, val]) => {
-        switch (val.status) {
-          case 'added':
-            return `${smallIntend}+ ${key}: ${iter(val.data, depth + 1)}`;
-          case 'deleted':
-            return `${smallIntend}- ${key}: ${iter(val.data, depth + 1)}`;
-          case 'changed':
-            return `${smallIntend}- ${key}: ${iter(val.oldData, depth + 1)}\n${smallIntend}+ ${key}: ${iter(val.newData, depth + 1)}`;
-          case 'unchanged':
-            return `${bigIntend}${key}: ${iter(val.data, depth + 1)}`;
-          case 'nested':
-            return `${bigIntend}${key}: ${iter(val.data, depth + 1)}`;
-          default:
-            return `${bigIntend}${key}: ${iter(val, depth + 1)}`;
-        }
-      });
-    return ['{', ...lines, `${bracketIntend}}`].join('\n');
+    if (!Array.isArray(currentValue)) {
+      const result = Object
+        .entries(currentValue)
+        .map((arr) => {
+          const [key, val] = arr;
+          return `${bigIntend}${key}: ${iter(val, depth + 1)}`;
+        });
+      return ['{', ...result, `${bracketIntend}}`].join('\n');
+    }
+    const result = currentValue.map((obj) => {
+      const { status } = obj;
+      switch (status) {
+        case 'added':
+          if (obj.value !== undefined) {
+            return `${smallIntend}+ ${obj.key}: ${obj.value}`;
+          }
+          return `${smallIntend}+ ${obj.key}: ${iter(obj.children, depth + 1)}`;
+        case 'deleted':
+          if (obj.value !== undefined) {
+            return `${smallIntend}- ${obj.key}: ${obj.value}`;
+          }
+          return `${smallIntend}- ${obj.key}: ${iter(obj.children, depth + 1)}`;
+        case 'changed':
+          return `${smallIntend}- ${obj.key}: ${iter(obj.oldValue, depth + 1)}\n${smallIntend}+ ${obj.key}: ${iter(obj.newValue, depth + 1)}`;
+        case 'unchanged':
+          return `${bigIntend}${obj.key}: ${obj.value}`;
+        default:
+          return `${bigIntend}${obj.key}: ${iter(obj.children, depth + 1)}`;
+      }
+    });
+    return ['{', ...result, `${bracketIntend}}`].join('\n');
   };
   return iter(value, 1);
 };

@@ -7,25 +7,25 @@ const formatOutput = (value) => {
 
 const formatToPlain = (value) => {
   const iter = (currentValue, path) => {
-    const result = Object
-      .entries(currentValue)
-      .flatMap(([key, val]) => {
-        if (val.status === 'added') {
-          const data = _.isObject(val.data) ? '[complex value]' : formatOutput(val.data);
-          return `Property '${[...path, key].join('.')}' was added with value: ${data}`;
+    const result = currentValue
+      .flatMap((obj) => {
+        const { status } = obj;
+        if (status === 'added') {
+          const data = obj.value === undefined ? '[complex value]' : formatOutput(obj.value);
+          return `Property '${[...path, obj.key].join('.')}' was added with value: ${data}`;
         }
-        if (val.status === 'deleted') {
-          return `Property '${[...path, key].join('.')}' was removed`;
+        if (status === 'deleted') {
+          return `Property '${[...path, obj.key].join('.')}' was removed`;
         }
-        if (val.status === 'changed') {
-          const oldData = _.isObject(val.oldData) ? '[complex value]' : formatOutput(val.oldData);
-          const newData = _.isObject(val.newData) ? '[complex value]' : formatOutput(val.newData);
-          return `Property '${[...path, key].join('.')}' was updated. From ${oldData} to ${newData}`;
+        if (status === 'changed') {
+          const oldData = _.isObject(obj.oldValue) ? '[complex value]' : formatOutput(obj.oldValue);
+          const newData = _.isObject(obj.newValue) ? '[complex value]' : formatOutput(obj.newValue);
+          return `Property '${[...path, obj.key].join('.')}' was updated. From ${oldData} to ${newData}`;
         }
-        if (val.status === 'unchanged') {
+        if (status === 'unchanged') {
           return [];
         }
-        return iter(val.data, [...path, key]);
+        return iter(obj.children, [...path, obj.key]);
       });
     return result.join('\n');
   };

@@ -5,10 +5,9 @@ import parseData from './parsers.js';
 import getDataDiff from './datadiff.js';
 
 const makePath = (filepath) => path.resolve(process.cwd(), filepath);
-const getFileExt = (filepath) => {
-  const normalizedExt = path.extname(filepath).slice(1);
-  return normalizedExt;
-};
+
+const getFileExt = (filepath) => path.extname(filepath).slice(1);
+
 const getFileData = (filepath) => readFileSync(filepath, 'utf8');
 
 const genDiff = (file1, file2, formatter = 'stylish') => {
