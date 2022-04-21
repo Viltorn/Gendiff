@@ -32,7 +32,7 @@
       {
         "key": "setting5",
         "status": "added",
-        "children": {
+        "value": {
           "key5": "value5"
         }
       },
@@ -94,7 +94,7 @@
   {
     "key": "group2",
     "status": "deleted",
-    "children": {
+    "value": {
       "abc": 12345,
       "deep": {
         "id": 45
@@ -104,7 +104,7 @@
   {
     "key": "group3",
     "status": "added",
-    "children": {
+    "value": {
       "deep": {
         "id": {
           "number": 45

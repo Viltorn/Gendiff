@@ -11,7 +11,7 @@ const formatToPlain = (value) => {
       .flatMap((obj) => {
         const { status } = obj;
         if (status === 'added') {
-          const data = obj.value === undefined ? '[complex value]' : formatOutput(obj.value);
+          const data = _.isObject(obj.value) ? '[complex value]' : formatOutput(obj.value);
           return `Property '${[...path, obj.key].join('.')}' was added with value: ${data}`;
         }
         if (status === 'deleted') {

@@ -1,38 +1,39 @@
 import _ from 'lodash';
 
-const formatToStylish = (value, replacer = '  ', spacecount = 2) => {
-  const iter = (currentValue, depth) => {
-    if (!_.isObject(currentValue)) {
-      return currentValue;
+const stringify = (value, depthlevel, replacer, spacecount) => {
+  const iter = (data, depth) => {
+    if (!_.isObject(data)) {
+      return data;
     }
+    const intendSize = depth * spacecount;
+    const intend = replacer.repeat(intendSize);
+    const bracketIntend = replacer.repeat(intendSize - spacecount);
+    const result = Object
+      .entries(data)
+      .map((arr) => {
+        const [key, val] = arr;
+        return `${intend}${key}: ${iter(val, depth + 1)}`;
+      });
+    return ['{', ...result, `${bracketIntend}}`].join('\n');
+  };
+  return iter(value, depthlevel);
+};
+
+const formatToStylish = (value, replacer = '  ', spacecount = 2) => {
+  const iter = (data, depth) => {
     const intendSize = depth * spacecount;
     const bigIntend = replacer.repeat(intendSize);
     const smallIntend = replacer.repeat(intendSize - 1);
     const bracketIntend = replacer.repeat(intendSize - spacecount);
-    if (!Array.isArray(currentValue)) {
-      const result = Object
-        .entries(currentValue)
-        .map((arr) => {
-          const [key, val] = arr;
-          return `${bigIntend}${key}: ${iter(val, depth + 1)}`;
-        });
-      return ['{', ...result, `${bracketIntend}}`].join('\n');
-    }
-    const result = currentValue.map((obj) => {
+    const result = data.map((obj) => {
       const { status } = obj;
       switch (status) {
         case 'added':
-          if (obj.value !== undefined) {
-            return `${smallIntend}+ ${obj.key}: ${obj.value}`;
-          }
-          return `${smallIntend}+ ${obj.key}: ${iter(obj.children, depth + 1)}`;
+          return `${smallIntend}+ ${obj.key}: ${stringify(obj.value, depth + 1, replacer, spacecount)}`;
         case 'deleted':
-          if (obj.value !== undefined) {
-            return `${smallIntend}- ${obj.key}: ${obj.value}`;
-          }
-          return `${smallIntend}- ${obj.key}: ${iter(obj.children, depth + 1)}`;
+          return `${smallIntend}- ${obj.key}: ${stringify(obj.value, depth + 1, replacer, spacecount)}`;
         case 'changed':
-          return `${smallIntend}- ${obj.key}: ${iter(obj.oldValue, depth + 1)}\n${smallIntend}+ ${obj.key}: ${iter(obj.newValue, depth + 1)}`;
+          return `${smallIntend}- ${obj.key}: ${stringify(obj.oldValue, depth + 1, replacer, spacecount)}\n${smallIntend}+ ${obj.key}: ${stringify(obj.newValue, depth + 1, replacer, spacecount)}`;
         case 'unchanged':
           return `${bigIntend}${obj.key}: ${obj.value}`;
         default:
